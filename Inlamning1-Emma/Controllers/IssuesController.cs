@@ -31,7 +31,8 @@ namespace Inlamning1_Emma.Controllers
                     Description = req.Description,
                     CustomerId = req.CustomerId,
                     Created = datetime,
-                    Modified = datetime
+                    Modified = datetime,
+                    StatusId = 1
                 };
 
                 _context.Add(issueEntity);
@@ -56,7 +57,19 @@ namespace Inlamning1_Emma.Controllers
                         Subject = issueEntity.Subject,
                         Description = issueEntity.Description,
                         Created = issueEntity.Created,
-                        Modified = issueEntity.Modified
+                        Modified = issueEntity.Modified,
+                        Status = new StatusResponse
+                        {
+                            Id = issueEntity.Status.Id,
+                            Status = issueEntity.Status.Status
+                        },
+                        Customer = new CustomerResponse
+                        {
+                            Id = issueEntity.Customer.Id,
+                            FirstName = issueEntity.Customer.FirstName,
+                            LastName = issueEntity.Customer.LastName,
+                            Email = issueEntity.Customer.Email
+                        }
                     
                     });
 
